@@ -4,7 +4,7 @@ A real-time computer vision pipeline built with **OpenCV** and **NumPy** that si
 
 > Sample output: yellow overlay = detected drivable lane region, green boxes = detected obstacles, red square = simulated navigation agent.
 
----
+----
 
 ## Table of Contents
 
