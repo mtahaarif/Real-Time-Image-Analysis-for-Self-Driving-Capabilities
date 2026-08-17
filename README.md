@@ -2,8 +2,6 @@
 
 A real-time computer vision pipeline built with **OpenCV** and **NumPy** that simulates core perception and decision-making components of a self-driving system: **lane detection**, **obstacle detection**, and **rule-based directional decision-making**. The system processes a video stream frame-by-frame, overlays the detected drivable lane region and obstacles, and simulates a navigation agent moving through the free space it detects.
 
-This project was developed as a **Digital Image Processing (DIP)** course project, 6th Semester, Department of Computer & Software Engineering, College of E&ME, **NUST**, Rawalpindi, Pakistan.
-
 > Sample output: yellow overlay = detected drivable lane region, green boxes = detected obstacles, red square = simulated navigation agent.
 
 ---
@@ -11,7 +9,6 @@ This project was developed as a **Digital Image Processing (DIP)** course projec
 ## Table of Contents
 
 - [Overview](#overview)
-- [Authors](#authors)
 - [How It Works](#how-it-works)
   - [1. Obstacle Detection](#1-obstacle-detection)
   - [2. Lane Highlighting](#2-lane-highlighting)
@@ -23,10 +20,6 @@ This project was developed as a **Digital Image Processing (DIP)** course projec
 - [Usage](#usage)
 - [Configuration Parameters](#configuration-parameters)
 - [Results & Evaluation](#results--evaluation)
-- [Known Limitations](#known-limitations)
-- [Future Improvements](#future-improvements)
-- [References](#references)
-- [License](#license)
 
 ---
 
@@ -39,20 +32,6 @@ Autonomous navigation requires reliable real-time perception to ensure safe moti
 3. **Simulates directional decision-making** for a virtual agent, choosing between **forward, right, left, or backward** movement based on which direction has free (lane-colored) space available.
 
 The entire system runs on a single video file, processing it frame-by-frame and rendering two live windows: an edge map and the final annotated frame (lane + obstacles + agent).
-
-## Authors
-
-- Muhammad Muhtashim
-- Muhammad Taha
-- Muhammad Sohaib Afzal
-- Muhammad Hashir Ashraf Awan
-
-Department of Computer & Software Engineering, College of E&ME, NUST, Rawalpindi, Pakistan
-Course: Digital Image Processing
-Submitted to: Mam LE Sundas Ashraf, Dr. Asad Khan
-
-Full write-up available in [`Project Report.pdf`](./Project%20Report.pdf).
-
 ---
 
 ## How It Works
@@ -210,33 +189,3 @@ As reported in the accompanying paper:
 A pre-recorded demo of the system output is referenced in the original report.
 
 ---
-
-## Known Limitations
-
-- **Color-specific obstacle detection**: only red/reddish-orange objects are recognized as obstacles; other-colored obstacles (vehicles, pedestrians, etc.) are not detected. This is a classical thresholding approach, not a general object detector.
-- **Heuristic lane detection**: relies on edge density and region geometry rather than true road/lane semantics; it can be fooled by other large, edge-dense regions in a scene (e.g., pavement patterns, sidewalks).
-- **Rule-based decisions only**: the directional decision-making logic is reactive and simplistic (checks a single strip of pixels per direction); it does not account for velocity, obstacle trajectories, or path planning.
-- **Hardcoded video path**: the entry point at the bottom of `project.py` points to a local file path and must be edited before running.
-- **No dynamic obstacle avoidance integration**: obstacle detection and directional decision-making run independently — detected obstacles are drawn on the frame but not currently factored into the movement logic.
-- **No automated tests**: this is a demonstration/prototype script, not production-grade or unit-tested software.
-
-## Future Improvements
-
-As suggested in the original report, this system can be extended by:
-
-- Incorporating **multi-color / multi-class object detection** (e.g., via a trained model such as YOLO) instead of fixed HSV thresholds.
-- Building a more **robust lane model** (e.g., Hough Transform-based lane line fitting, perspective/bird's-eye transforms, or a learned segmentation model).
-- Replacing the rule-based decision module with a **learning-based or planning-based** navigation policy that accounts for obstacle positions, agent velocity, and path history.
-- Adding configurability (CLI arguments / config file) instead of hardcoded paths and constants.
-
----
-
-## References
-
-Full methodology, implementation listing, and evaluation are documented in [`Project Report.pdf`](./Project%20Report.pdf):
-
-> M. Muhtashim, M. Taha, M. S. Afzal, M. H. A. Awan, "Real-time Image Analysis for Self Driving Capabilities," Digital Image Processing Course Project, Department of Computer & Software Engineering, College of E&ME, NUST, Rawalpindi, Pakistan.
-
-## License
-
-No license has been specified for this repository. All rights reserved by the authors unless otherwise stated.
